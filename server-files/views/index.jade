@@ -1,0 +1,290 @@
+doctype html
+html(lang='en')
+  head
+    link(href='https://fonts.googleapis.com/css?family=Spectral+SC', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Poiret+One|Monoton', rel='stylesheet')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    title Main page
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script.
+      $(document).ready(function(){
+      $("#title").delay(400).animate({opacity:'1'},1500);
+      });
+      $(document).ready(function(){
+      $("h3").delay(1200).animate({opacity:'1'},1500);
+      });
+    style.
+      body,html{
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+      }
+      #box1{
+      height: 100vh;
+      width: 100%;
+      background-image: url(/images/1.jpg);
+      background-size: cover;
+      display: table;
+      background-attachment: fixed;
+      }
+      #box2{
+      height: 100vh;
+      width: 100%;
+      background-image: url(/images/2.jpg);
+      background-size: cover;
+      display: table;
+      background-attachment: fixed;
+      margin:0;
+      }
+      #box3{
+      height: 100vh;
+      width: 100%;
+      background-image: url(/images/4.jpg);
+      background-size: cover;
+      display: table;
+      background-attachment: fixed;
+      }
+      ul li{
+      font-family: 'Poiret One', cursive;
+      font-size: 20px;
+      font-weight: bold;
+      }
+      ul li a:hover{
+      text-shadow: 7px 4px 6px white;
+      }
+      h1{
+      padding-top: 40vh;
+      text-align: center;
+      font-size: 45px;
+      letter-spacing: 3 px;
+      font-family: 'Spectral SC';
+      }
+      #title{
+      text-shadow: 5px 5px 5px lightblue;
+      opacity: 0;
+      }
+      h3{
+      color:white;
+      font-family: 'Spectral SC';
+      text-align: center;
+      opacity: 0;
+      }
+      p{
+      color:white;
+      font-family: 'Spectral SC';
+      text-align: center;
+      }
+      p.about{
+      font-size:20px;
+      color: #3d3f42;
+      font-weight: bold;
+      }
+      img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      opacity:0.7;
+      }
+      img:hover{
+      cursor: pointer;
+      opacity: 1;
+      border: 4px solid #c3cee0;
+      }
+  body(data-spy='scroll', data-target='.navbar', data-offset='50')
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.navbar-header.pull-left(style="color: white;font-family: 'Monoton', cursive;") GroupBy
+        .collapse.navbar-collapse.pull-right
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#box2') About Us
+            li
+              a(href='#box3') Contact US
+            li
+              a(href='#')
+                span.glyphicon.glyphicon-user
+                |  Sign Up
+            li
+              a(href='#')
+                span.glyphicon.glyphicon-log-in
+                |  Login
+    #box1
+      h1#title Web UI Design and Development
+      br
+      #members
+        h3 Praneetha Reddy Devireddy
+        h3 Amir Radman
+        h3 Ketki Bhusari
+        h3 Yamin Wang
+    #box2
+      #intro.text-center
+        h2(style="font-family: 'Poiret One', cursive; font-weight:bolder;") Team ACE
+        p.about
+          | Our team is a group of 4 gradute students working on 
+          br
+          |  creating an application to provide the employers
+          br
+          | a more convenient way to learn more
+          br
+          |  about us and contact us directly
+          br
+      br
+      br
+      br
+      br
+      .row.container-center
+        .col-xs-12.col-sm-6.col-md-3
+          a(href='#desc1', data-toggle='collapse')
+            img.img-circle(src='/images/a.jpg', width='250', height='250')
+          #desc1.collapse
+            p
+              | My name is Amir Radman
+              br
+              br
+              | and I'm a graduate student
+              br
+              br
+              | majoring in software engineering
+              br
+              br
+              | My area of focus is web development
+              br
+              br
+              | and I expect graduation in May 2020
+              br
+            p
+              a(href='#')
+                i.fa.fa-facebook-square(style='font-size:30px; color:white')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-linkedin-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-git-square(style='font-size:30px; color:white;')
+        .col-xs-12.col-sm-6.col-md-3
+          a(href='#desc2', data-toggle='collapse')
+            img.img-circle(src='/images/b.jpg', width='250', height='250')
+          #desc2.collapse
+            p
+              | My name is Amir Radman
+              br
+              br
+              | and I'm a graduate student
+              br
+              br
+              | majoring in software engineering
+              br
+              br
+              | My area of focus is web development
+              br
+              br
+              | and I expect graduation in May 2020
+              br
+            p
+              a(href='#')
+                i.fa.fa-facebook-square(style='font-size:30px; color:white')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-linkedin-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-git-square(style='font-size:30px; color:white;')
+        .col-xs-12.col-sm-6.col-md-3
+          a(href='#desc3', data-toggle='collapse')
+            img.img-circle(src='/images/c.jpg', width='250', height='250')
+          #desc3.collapse
+            p
+              | My name is Amir Radman
+              br
+              br
+              | and I'm a graduate student
+              br
+              br
+              | majoring in software engineering
+              br
+              br
+              | My area of focus is web development
+              br
+              br
+              | and I expect graduation in May 2020
+              br
+            p
+              a(href='#')
+                i.fa.fa-facebook-square(style='font-size:30px; color:white')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-linkedin-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-git-square(style='font-size:30px; color:white;')
+        .col-xs-12.col-sm-6.col-md-3
+          a(href='#desc4', data-toggle='collapse')
+            img.img-circle(src='/images/a.jpg', width='250', height='250')
+          #desc4.collapse
+            p
+              | My name is Amir Radman
+              br
+              br
+              | and I'm a graduate student
+              br
+              br
+              | majoring in software engineering
+              br
+              br
+              | My area of focus is web development
+              br
+              br
+              | and I expect graduation in May 2020
+              br
+            p
+              a(href='#')
+                i.fa.fa-facebook-square(style='font-size:30px; color:white')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-linkedin-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href='#')
+                  i.fa.fa-git-square(style='font-size:30px; color:white;')
+    #box3
+      .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')
+        form.form-horizontal(action='contactProcess', method='POST')
+          .form-group
+            label.control-label.col-sm-2(name='name') Name:
+            .col-sm-10
+              input.form-control(type='text', name='name', placeholder='Enter your name', required='')
+          .form-group
+            label.control-label.col-sm-2(name='email') Email:
+            .col-sm-10
+              input.form-control(type='email', name='email', placeholder='Enter your email', required='')
+          .form-group
+            label.control-label.col-sm-2(name='contact') Recipient(s):
+            .col-sm-10
+              select(name='myselect' multiple)
+               option(value=process.env.AMIR_EMAIL) Amir Radman
+               option(value=process.env.KETKI_EMAIL) Ketki Bhusari
+               option(value=process.env.PRANEETHA_EMAIL) Praneetha
+               option(value=process.env.YAMIN_EMAIL) Yamin Wong
+          .form-group
+            label.control-label.col-sm-2(name='comment') Comment/Question:
+            .col-sm-10
+              textarea.form-control(style='resize:none;', rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='')
+          .form-group(style='text-align:center;')
+            .col-sm-offset-2.col-sm-10
+              button.btn.btn-success(type='submit') Submit
