@@ -5,7 +5,6 @@ var session = require('express-session');
 var index = require('./server-files/routes/index.js');
 
 var app = express();
-var port = 3000;
 //view engine template
 app.set('views',path.join(__dirname,'server-files','views'));
 app.set('view engine','jade');
@@ -17,7 +16,7 @@ app.use(session( {secret: "String for encrypting cookies."} ));
 
 app.use('/',index);
 
-app.listen(port);
-console.log("Server is listening on port:" + port);
+app.listen(process.env.PORT || 3000);
+console.log("Server is listening on port:" + process.env.PORT);
 
 module.exports = app;

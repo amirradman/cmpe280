@@ -23,11 +23,11 @@ module.exports.post_registration = (req,res)=>{
 };
 
 module.exports.post_contact = (req,res)=>{
-	
 	var name = req.body.name;
 	var email = req.body.email;
-	var recipient  = req.body.myselect;
+	var recipient = req.body.rec;
 	var comment = req.body.comment;
+
 	var body = "The following form was submitted. \n Name: " + name + "\n Email: " + email + "\n Comment/Questions:  " + comment;
 
 	var transporter = nodemailer.createTransport({
