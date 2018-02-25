@@ -11,6 +11,16 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     script.
+    
+      $(document).ready(function () {
+      $('#submitbutton').click(function() {checked = $("input[type=checkbox]:checked").length;
+      if(!checked) {
+      alert("You must check at least one checkbox!");
+      return false;
+      }
+      });
+      });
+
       $(document).ready(function(){
       $("#title").delay(400).animate({opacity:'1'},1500);
       });
@@ -296,4 +306,4 @@ html(lang='en')
               textarea.form-control(style='resize:none;', rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='')
           .form-group(style='text-align:center;')
             .col-sm-offset-2.col-sm-10
-              button.btn.btn-success(type='submit') Submit
+              button.btn.btn-success(type='submit' id="submitbutton") Submit
