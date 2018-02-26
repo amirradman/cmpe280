@@ -104,6 +104,10 @@ html(lang='en')
       opacity: 1;
       border: 4px solid #c3cee0;
       }
+      .input:focus{
+      outline:none !important;
+      border: 3px solid #74b7e8;
+      }
   body(data-spy='scroll', data-target='.navbar', data-offset='50')
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
@@ -278,11 +282,11 @@ html(lang='en')
           .form-group
             label.control-label.col-sm-2(name='name') Name:
             .col-sm-10
-              input.form-control(type='text', name='name', placeholder='Enter your name', required='')
+              input.form-control(type='text', name='name', placeholder='Enter your name', required='', class='input')
           .form-group
             label.control-label.col-sm-2(name='email') Email:
             .col-sm-10
-              input.form-control(type='email', name='email', placeholder='Enter your email', required='')
+              input.form-control(type='email', name='email', placeholder='Enter your email', required='', class='input')
           .form-group
             label.control-label.col-sm-2(name='contact') Recipient(s):
             .col-sm-10
@@ -303,7 +307,7 @@ html(lang='en')
           .form-group
             label.control-label.col-sm-2(name='comment') Comment/Question:
             .col-sm-10
-              textarea.form-control(style='resize:none;', rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='')
+              textarea.form-control(style='resize:none;', rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='', class='input')
           .form-group(style='text-align:center;')
             .col-sm-offset-2.col-sm-10
               button.btn.btn-success(type='submit' id="submitbutton") Submit
