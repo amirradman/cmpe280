@@ -20,6 +20,10 @@ html(lang='en')
       }
       });
       });
+      
+      $( function() {
+      $( document ).tooltip();
+      });
 
       $(document).ready(function(){
       $("#title").delay(400).animate({opacity:'1'},1500);
@@ -27,6 +31,7 @@ html(lang='en')
       $(document).ready(function(){
       $("h3").delay(1200).animate({opacity:'1'},1500);
       });
+      $("#resizable").resizable();
     style.
       body,html{
       margin: 0px;
@@ -286,7 +291,7 @@ html(lang='en')
           .form-group
             label.control-label.col-sm-2(name='email') Email:
             .col-sm-10
-              input.form-control(type='email', name='email', placeholder='Enter your email', required='', class='input')
+              input.form-control(type='email', name='email', placeholder='Enter your email', required='', class='input' title="We ask for email in order to contact you back")
           .form-group
             label.control-label.col-sm-2(name='contact') Recipient(s):
             .col-sm-10
@@ -304,10 +309,11 @@ html(lang='en')
               span
                 input(type='checkbox', name="rec" , value=process.env.YAMIN_EMAIL)
                 | Yamin Wang
+              fieldset.
           .form-group
             label.control-label.col-sm-2(name='comment') Comment/Question:
             .col-sm-10
-              textarea.form-control(style='resize:none;', rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='', class='input')
+              textarea.form-control(id="resizable" rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='', class='input')
           .form-group(style='text-align:center;')
             .col-sm-offset-2.col-sm-10
-              button.btn.btn-success(type='submit' id="submitbutton") Submit
+              button.btn.btn-success(button='submit' id="submitbutton") Submit
