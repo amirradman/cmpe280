@@ -4,12 +4,15 @@ html(lang='en')
     link(href='https://fonts.googleapis.com/css?family=Spectral+SC', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Poiret+One|Monoton', rel='stylesheet')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     title Main page
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='https://code.jquery.com/jquery-1.12.4.js')
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
     script.
     
       $(document).ready(function () {
@@ -27,6 +30,11 @@ html(lang='en')
       $(document).ready(function(){
       $("h3").delay(1200).animate({opacity:'1'},1500);
       });
+      
+      $(function(){
+      $("#accordion").accordion();
+      });
+      
     style.
       body,html{
       margin: 0px;
@@ -51,6 +59,15 @@ html(lang='en')
       margin:0;
       }
       #box3{
+      height: 100vh;
+      width: 100%;
+      background-image: url(/images/3.jpg);
+      background-size: cover;
+      display: table;
+      background-attachment: fixed;
+      margin:0;
+      }
+      #box4{
       height: 100vh;
       width: 100%;
       background-image: url(/images/4.jpg);
@@ -83,8 +100,15 @@ html(lang='en')
       text-align: center;
       opacity: 0;
       }
+      .acc{
+      color:black;
+      font-weight: bold;
+      font-family: 'Spectral SC';
+      font-size: 15 px;
+      text-align: center;
+      }
       p{
-      color:white;
+      color:black;
       font-family: 'Spectral SC';
       text-align: center;
       }
@@ -108,6 +132,23 @@ html(lang='en')
       outline:none !important;
       border: 3px solid #74b7e8;
       }
+      .column {
+      float: left;
+      width: 50%;
+      height: 150px;
+      padding: 15px;
+      }
+      .row:after {
+      content: "";
+      display: table;
+      clear: both;
+      }
+      @media (max-width:600px) {
+      .column {
+      width: 100%;
+      }
+      }
+      
   body(data-spy='scroll', data-target='.navbar', data-offset='50')
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
@@ -122,7 +163,7 @@ html(lang='en')
             li
               a(href='#box2') About Us
             li
-              a(href='#box3') Contact US
+              a(href='#box4') Contact US
             li
               a(href='#')
                 span.glyphicon.glyphicon-user
@@ -276,7 +317,35 @@ html(lang='en')
               span
                 a(href='https://github.com/Yamin1900')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
+                  
     #box3
+      h3 The Third assignment Section
+      .row
+      #accordion.column
+        h2.acc Amir Radman
+        div
+          p My name is Amir Radman and I'm a graduate student
+          p I am majoring in SE and my area of focus is Cloud Computing
+          p I expect graduation in May 2018
+        h2.acc Ketki Bhusari
+        div
+          p My name is Ketki Bhusari and I'm a graduate student
+          p I am majoring in SE and my area of focus is Cloud Computing
+          p I expect graduation in May 2018
+        h2.acc Praneetha Reddy
+        div
+          p My name is Praneetha Reddy and I'm a graduate student
+          p I am majoring in SE and my area of focus is Cloud Computing
+          p I expect graduation in May 2018
+        h2.acc Yamin Wang
+        div
+          p My name is Yamin Wang and I'm a graduate student
+          p I am majoring in EE and my area of focus is Networking
+          p I expect graduation in May 2018
+      #ajax-column.column
+        h3 Get the ajax here
+          
+    #box4
       .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')
         form.form-horizontal(action='contactProcess', method='POST')
           .form-group
