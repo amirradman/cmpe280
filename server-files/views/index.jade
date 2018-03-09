@@ -23,6 +23,10 @@ html(lang='en')
       }
       });
       });
+
+      $(function() {
+      $("#ajax-column").load("text");
+      });
       
       $( function() {
       $( document ).tooltip();
@@ -145,13 +149,7 @@ html(lang='en')
       content: "";
       display: table;
       clear: both;
-      }
-      @media (max-width:600px) {
-      .column {
-      width: 100%;
-      }
-      }
-      
+      }      
   body(data-spy='scroll', data-target='.navbar', data-offset='50')
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
@@ -324,7 +322,7 @@ html(lang='en')
     #box3
       h3 The Third assignment Section
       .row
-      #accordion.column
+      #accordion.col-sm-12.col-md-6.col-lg-6
         h2.acc Amir Radman
         div
           p My name is Amir Radman and I'm a graduate student
@@ -345,8 +343,8 @@ html(lang='en')
           p My name is Yamin Wang and I'm a graduate student
           p I am majoring in EE and my area of focus is Networking
           p I expect graduation in May 2018
-      #ajax-column.column
-        h3 Get the ajax here
+
+      #ajax-column.col-sm-12.col-md-6.col-lg-6
           
     #box4
       .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')

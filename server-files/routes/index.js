@@ -4,11 +4,16 @@
 var express = require('express');
 var router = express.Router();
 var ctrl = require('../controllers/ctrl');
+var path = require('path');
 
 /*
  * Router for Home page
  */
 router.get('/',ctrl.home);
+
+router.get('/text', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/text.html"));
+})
 
 /*
  * Router for get login page
