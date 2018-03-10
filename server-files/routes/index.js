@@ -11,8 +11,23 @@ var path = require('path');
  */
 router.get('/',ctrl.home);
 
+//routing for ajax call for drag and drop
 router.get('/text', (req,res)=>{
 	res.sendFile(path.join(__dirname,"../views/text.html"));
+})
+
+//below are 4 routes used for ajax calls for the ajaxtabs
+router.get('/amir', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/amir.txt"));
+})
+router.get('/ketki', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/ketki.txt"));
+})
+router.get('/praneetha', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/praneetha.txt"));
+})
+router.get('/yamin', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/yamin.txt"));
 })
 
 /*

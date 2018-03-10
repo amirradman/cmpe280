@@ -43,12 +43,15 @@ html(lang='en')
       $(document).ready(function(){
       $("#title").delay(400).animate({opacity:'1'},1500);
       });
+
       $(document).ready(function(){
       $("h3").delay(1200).animate({opacity:'1'},1500);
       });
+
       $(function(){
-      $("#accordion").accordion();
+      $("#tabs").tabs({});
       });
+
       $("#resizable").resizable();
 
     style.
@@ -329,41 +332,33 @@ html(lang='en')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
                   
     #box3
-      h3 Accodian and Ajax Demo Section<br>
+      h3 Ajax Tabs and Ajax/Drag & Drop Demo Section<br>
       p
        b Drag and Drop the red box to view the ajax text
       .row
-      #accordion.col-sm-12.col-md-6.col-lg-6
-        h2.acc Amir Radman
-        div
-          p My name is Amir Radman and I'm a graduate student
-          p I am majoring in SE and my area of focus is Cloud Computing
-          p I expect graduation in May 2018
-        h2.acc Ketki Bhusari
-        div
-          p My name is Ketki Bhusari and I'm a graduate student
-          p I am majoring in SE and my area of focus is Cloud Computing
-          p I expect graduation in May 2018
-        h2.acc Praneetha Reddy
-        div
-          p My name is Praneetha Reddy and I'm a graduate student
-          p I am majoring in SE and my area of focus is Cloud Computing
-          p I expect graduation in May 2018
-        h2.acc Yamin Wang
-        div
-          p My name is Yamin Wang and I'm a graduate student
-          p I am majoring in EE and my area of focus is Networking
-          p I expect graduation in May 2018
-
-      #ajax-column.col-sm-12.col-md-6.col-lg-6
-      .row 
-      .col-sm-12.col-md-12.col-lg-12
-        h3 Drag and Drop Demo Section
-      .row
-      .col-sm-12.col-md-6.col-lg-6
-        #drag(style="height: 30vh;width:50vh;border:3px solid red;background-image:url(/images/drag.png); background-size:100% 100%; repeat:none")
-      .col-sm-12.col-md-6.col-lg-6
-        #drop(style="height: 40vh;width:60vh;border: 2px solid green;")
+        #tabs.col-sm-12.col-md-6.col-lg-6
+          ul
+            li
+              a(href='yamin') Yamin Wong
+            li
+              a(href='praneetha') Praneetha
+            li
+              a(href='amir') Amir Radman
+            li
+              a(href='ketki') Kekti Bhusari
+          #tabs-1
+          #tabs-2
+          #tabs-3
+          #tabs-4
+        #ajax-column.col-sm-12.col-md-6.col-lg-6
+        .row 
+        .col-sm-12.col-md-12.col-lg-12
+          h3 Drag and Drop Demo Section
+        .row
+        .col-sm-12.col-md-6.col-lg-6
+          #drag(style="height: 30vh;width:50vh;border:3px solid red;background-image:url(/images/drag.png); background-size:100% 100%; repeat:none")
+        .col-sm-12.col-md-6.col-lg-6
+          #drop(style="height: 40vh;width:60vh;border: 2px solid green;")
           
     #box4
       .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')
