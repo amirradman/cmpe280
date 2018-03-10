@@ -24,8 +24,16 @@ html(lang='en')
       });
       });
 
-      $(function() {
+
+
+      $(function(){
+      $("#drag").draggable({revert: "invalid", stack: "#drag"});
+      $("#drop").droppable({
+      classes: {"ui-droppable-active":"ui-state-active"},tolerance: "fit",
+      drop: function(event, ui){
       $("#ajax-column").load("text");
+      }
+      });
       });
       
       $( function() {
@@ -42,6 +50,7 @@ html(lang='en')
       $("#accordion").accordion();
       });
       $("#resizable").resizable();
+
     style.
       body,html{
       margin: 0px;
@@ -202,7 +211,7 @@ html(lang='en')
           a(href='#desc1', data-toggle='collapse')
             img.img-circle(src='/images/a.jpg', width='250', height='250')
           #desc1.collapse
-            p
+            p(style="color: white;")
               | My name is Amir Radman
               br
               br
@@ -232,7 +241,7 @@ html(lang='en')
           a(href='#desc2', data-toggle='collapse')
             img.img-circle(src='/images/b.jpg', width='250', height='250')
           #desc2.collapse
-            p
+            p(style="color: white;")
               | My name is Ketki Bhurasi
               br
               br
@@ -262,7 +271,7 @@ html(lang='en')
           a(href='#desc3', data-toggle='collapse')
             img.img-circle(src='/images/c.jpg', width='250', height='250')
           #desc3.collapse
-            p
+            p(style="color: white;")
               | My name is Praneetha Devireddy
               br
               br
@@ -292,7 +301,7 @@ html(lang='en')
           a(href='#desc4', data-toggle='collapse')
             img.img-circle(src='/images/a.jpg', width='250', height='250')
           #desc4.collapse
-            p
+            p(style="color: white;")
               | My name is Yamin Wang
               br
               br
@@ -320,7 +329,9 @@ html(lang='en')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
                   
     #box3
-      h3 The Third assignment Section
+      h3 Accodian and Ajax Demo Section<br>
+      p
+       b Drag and Drop the red box to view the ajax text
       .row
       #accordion.col-sm-12.col-md-6.col-lg-6
         h2.acc Amir Radman
@@ -345,6 +356,14 @@ html(lang='en')
           p I expect graduation in May 2018
 
       #ajax-column.col-sm-12.col-md-6.col-lg-6
+      .row 
+      .col-sm-12.col-md-12.col-lg-12
+        h3 Drag and Drop Demo Section
+      .row
+      .col-sm-12.col-md-6.col-lg-6
+        #drag(style="height: 30vh;width:50vh;border:3px solid red;background-image:url(/images/drag.png); background-size:100% 100%; repeat:none")
+      .col-sm-12.col-md-6.col-lg-6
+        #drop(style="height: 40vh;width:60vh;border: 2px solid green;")
           
     #box4
       .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')
