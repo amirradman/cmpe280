@@ -2,7 +2,8 @@ doctype html
 html(lang='en')
   head
     link(href='https://fonts.googleapis.com/css?family=Spectral+SC', rel='stylesheet')
-    link(href='https://fonts.googleapis.com/css?family=Poiret+One|Monoton', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Poiret+One|Monoton|Rye', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Josefin+Sans', rel='stylesheet')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     title Main page
@@ -13,6 +14,7 @@ html(lang='en')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     script(src='https://code.jquery.com/jquery-1.12.4.js')
     script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZRAiM-bisj2U3fov8oir9jxUoo34xwYA')
     script.
     
       $(document).ready(function () {
@@ -26,6 +28,25 @@ html(lang='en')
 
 
 
+      function drawmap() {
+      var myCenter = new google.maps.LatLng(37.335187,-121.881072);
+      var mapCanvas = document.getElementById("map");
+      var mapOptions = {center: myCenter, zoom: 5};
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({position:myCenter,animation: google.maps.Animation.BOUNCE});
+      marker.setMap(map);
+
+      var infowindow = new google.maps.InfoWindow({
+      content: "San Jose State University <br> 1 Washington Street <br> San Jose, CA 95192"
+      });
+
+      infowindow.open(map,marker);
+      }
+
+      $(function(){
+      drawmap();
+      });
+
       $(function(){
       $("#drag").draggable({revert: "invalid", stack: "#drag"});
       $("#drop").droppable({
@@ -37,7 +58,9 @@ html(lang='en')
       });
       
       $( function() {
-      $( document ).tooltip();
+      $( document ).tooltip({
+      track: true
+      });
       });
 
       $(document).ready(function(){
@@ -341,7 +364,7 @@ html(lang='en')
             li
               a(href='yamin') Yamin Wang
             li
-              a(href='praneetha') Praneetha
+              a(href='praneetha') Praneetha Devireddy
             li
               a(href='amir') Amir Radman
             li
@@ -361,41 +384,50 @@ html(lang='en')
           #drop(style="height: 40vh;width:60vh;border: 2px solid green;")
           
     #box4
-      .formContainer(style=' margin-left:20vw; margin-right:20vw;margin-top: 10vh; height:100vh; ')
-        form.form-horizontal(action='contactProcess', method='POST')
-          .form-group
-            label.control-label.col-sm-2(name='name') Name:
-            .col-sm-10
-              input.form-control(type='text', name='name', placeholder='Enter your name', required='', class='input')
-          .form-group
-            label.control-label.col-sm-2(name='email') Email:
-            .col-sm-10
-              input.form-control(type='email', name='email', placeholder='Enter your email', required='', class='input' title="We ask for email in order to contact you back")
-          .form-group
-            label.control-label.col-sm-2(name='contact') Recipient(s):
-            .col-sm-10
-              input(type='checkbox', name="rec" , value=process.env.AMIR_EMAIL)
-              | Amir Radman
-              | &nbsp&nbsp
-              span
-                input(type='checkbox', name="rec" , value=process.env.KETKI_EMAIL)
-                | Ketki Bhusari
-              | &nbsp&nbsp
-              span
-                input(type='checkbox', name="rec" , value=process.env.PRANEETHA_EMAIL)
-                | Praneetha
-              | &nbsp&nbsp
-              span
-                input(type='checkbox', name="rec" , value=process.env.YAMIN_EMAIL)
-                | Yamin Wang
-              fieldset.
-          .form-group
-            label.control-label.col-sm-2(name='comment') Comment/Question:
-            .col-sm-10
-              textarea.form-control(id="resizable" rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='', class='input')
-          .form-group(style='text-align:center;')
-            .col-sm-offset-2.col-sm-10
-              button.btn.btn-success(input type='submit' id="submitbutton") Submit
+      .row
+      .col-sm-12.col-md-12.col-lg-12
+        h2(style="letter-spacing:2px;margin-top:10vh;text-align: center;border-radius:25px;background: -webkit-linear-gradient(top,#eee, #333);font-family:Rye;") FEEL FREE TO CONTACT US! 
+      .row(style="margin-top: 30vh;")
+      .col-sm-12.col-md-6.col-lg-6
+        .formContainer
+          form.form-horizontal(action='contactProcess', method='POST')
+            .form-group
+              label.control-label.col-sm-2(name='name') Name:
+              .col-sm-10
+                input.form-control(type='text', name='name', placeholder='Enter your name', required='', class='input')
+            .form-group
+              label.control-label.col-sm-2(name='email') Email:
+              .col-sm-10
+                input.form-control(type='email', name='email', placeholder='Enter your email', required='', class='input' title="We ask for email in order to contact you back")
+            .form-group
+              label.control-label.col-sm-2(name='contact') Recipient(s):
+              .col-sm-10
+                input(type='checkbox', name="rec" , value=process.env.AMIR_EMAIL)
+                | Amir Radman
+                | &nbsp&nbsp
+                span
+                  input(type='checkbox', name="rec" , value=process.env.KETKI_EMAIL)
+                  | Ketki Bhusari
+                | &nbsp&nbsp
+                span
+                  input(type='checkbox', name="rec" , value=process.env.PRANEETHA_EMAIL)
+                  | Praneetha
+                | &nbsp&nbsp
+                span
+                  input(type='checkbox', name="rec" , value=process.env.YAMIN_EMAIL)
+                  | Yamin Wang
+                fieldset.
+            .form-group
+              label.control-label.col-sm-2(name='comment') Comment/Question:
+              .col-sm-10
+                textarea.form-control(id="resizable" rows='5', cols='5', name='comment', placeholder='Enter your comment/question', required='', class='input')
+            .form-group(style='text-align:center;')
+              .col-sm-offset-2.col-sm-10
+                button.btn.btn-success(input type='submit' id="submitbutton") Submit
+      .col-sm-12.col-md-6.col-lg-6
+        #map(style="width:100%;height:322px")
+
+
    #popbox
       #login.center-vertical
       
