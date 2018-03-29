@@ -11,15 +11,26 @@ module.exports.get_login = (req,res)=>{
 };
 
 module.exports.post_login = (req,res)=>{
-	
+		
 };
 
 module.exports.get_registration = (req,res)=>{
-	
+	res.render('register');
 };
 
 module.exports.post_registration = (req,res)=>{
-	
+	var userName = req.body.username;
+	var passWord = req.body.password;
+	var skills = req.body.skills;
+	var skillList = skills.split(" ");
+	var db = req.db;
+ 	var collection = db.get('users');
+	collection.insert({
+		username: userName,
+		password: passWord,
+		skill: skillList
+	});
+	res.redirect('../');
 };
 
 module.exports.post_contact = (req,res)=>{

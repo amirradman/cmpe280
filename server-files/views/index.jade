@@ -103,7 +103,7 @@ html(lang='en')
       #box3{
       height: 100vh;
       width: 100%;
-      background-image: url(/images/3.jpg);
+      background-image: url(/images/resumebg.jpg);
       background-size: cover;
       display: table;
       background-attachment: fixed;
@@ -156,8 +156,9 @@ html(lang='en')
       }
       p.about{
       font-size:20px;
-      color: #3d3f42;
+      color: white;
       font-weight: bold;
+      line-height: 2
       }
       img{
       display: block;
@@ -201,11 +202,11 @@ html(lang='en')
             li
               a(href='#box4') Contact US
             li
-              a(href='#')
+              a(href='registration')
                 span.glyphicon.glyphicon-user
                 |  Sign Up
             li
-              a(href='#popbox' onclick="window.open(this.href); return false;")
+              a(href='#')
                 span.glyphicon.glyphicon-log-in
                 |  Login
     #box1
@@ -218,7 +219,8 @@ html(lang='en')
         h3 Yamin Wang
     #box2
       #intro.text-center
-        h2(style="font-family: 'Poiret One', cursive; font-weight:bolder;") Team ACE
+        h2(style="font-family: 'Poiret One', cursive; font-weight:bolder; color:white")
+          u Team ACE
         p.about
           | Our team is a group of 4 gradute students working on 
           br
@@ -235,7 +237,7 @@ html(lang='en')
       .row.container-center
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc1', data-toggle='collapse')
-            img.img-circle(src='/images/a.jpg', width='250', height='250')
+            img.img-circle(src='/images/amir.jpg', width='250', height='250')
           #desc1.collapse
             p(style="color: white;")
               | My name is Amir Radman
@@ -263,9 +265,13 @@ html(lang='en')
               span
                 a(href='#')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href="https://s3.amazonaws.com/groupbyresumes/Resume.pdf" target="_blank")
+                  i.fa.fa-cloud-download(style="font-size: 30px; color:white")
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc2', data-toggle='collapse')
-            img.img-circle(src='/images/b.jpg', width='250', height='250')
+            img.img-circle(src='/images/ketki.jpg', width='250', height='250')
           #desc2.collapse
             p(style="color: white;")
               | My name is Ketki Bhurasi
@@ -293,6 +299,10 @@ html(lang='en')
               span
                 a(href='#')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href="https://s3.amazonaws.com/groupbyresumes/Resume.pdf" target="_blank")
+                  i.fa.fa-cloud-download(style="font-size: 30px; color:white")
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc3', data-toggle='collapse')
             img.img-circle(src='/images/c.jpg', width='250', height='250')
@@ -323,9 +333,13 @@ html(lang='en')
               span
                 a(href='#')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
+              | &nbsp
+              span
+                a(href="https://s3.amazonaws.com/groupbyresumes/Resume.pdf" target="_blank")
+                  i.fa.fa-cloud-download(style="font-size: 30px; color:white")
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc4', data-toggle='collapse')
-            img.img-circle(src='/images/a.jpg', width='250', height='250')
+            img.img-circle(src='/images/yamin.jpg', width='250', height='250')
           #desc4.collapse
             p(style="color: white;")
               | My name is Yamin Wang
@@ -353,13 +367,13 @@ html(lang='en')
               span
                 a(href='https://github.com/Yamin1900')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
-                  
-    #box3
-      h3 Ajax Tabs and Ajax/Drag & Drop Demo Section<br>
-      p
-       b Drag and Drop the red box to view the ajax text
-      .row
-        #tabs.col-sm-12.col-md-6.col-lg-6
+              | &nbsp
+              span
+                a(href="https://s3.amazonaws.com/groupbyresumes/yaminresume.pdf" target="_blank")
+                  i.fa.fa-cloud-download(style="font-size: 30px; color:white")         
+    #box3.container-fluid
+      .row(style="padding-top: 15vh;").container-fluid
+        #tabs.col-sm-12.col-md-12.col-lg-12
           ul
             li
               a(href='yamin') Yamin Wang
@@ -373,16 +387,6 @@ html(lang='en')
           #tabs-2
           #tabs-3
           #tabs-4
-        #ajax-column.col-sm-12.col-md-6.col-lg-6
-        .row 
-        .col-sm-12.col-md-12.col-lg-12
-          h3 Drag and Drop Demo Section
-        .row
-        .col-sm-12.col-md-6.col-lg-6
-          #drag(style="height: 30vh;width:50vh;border:3px solid red;background-image:url(/images/drag.png); background-size:100% 100%; repeat:none")
-        .col-sm-12.col-md-6.col-lg-6
-          #drop(style="height: 40vh;width:60vh;border: 2px solid green;")
-          
     #box4
       .row
       .col-sm-12.col-md-12.col-lg-12
@@ -411,7 +415,7 @@ html(lang='en')
                 | &nbsp&nbsp
                 span
                   input(type='checkbox', name="rec" , value=process.env.PRANEETHA_EMAIL)
-                  | Praneetha
+                  | Praneetha Devireddy
                 | &nbsp&nbsp
                 span
                   input(type='checkbox', name="rec" , value=process.env.YAMIN_EMAIL)
@@ -426,34 +430,3 @@ html(lang='en')
                 button.btn.btn-success(input type='submit' id="submitbutton") Submit
       .col-sm-12.col-md-6.col-lg-6
         #map(style="width:100%;height:322px")
-
-
-   #popbox
-      #login.center-vertical
-      
-        form.well(id='form-login', method='post')
-          h2 Hello!
-          h5 Please Login to Your Account
-          .form-group
-            label Username
-            input.form-control(type='text', id='user-tf', name='user', required)
-          .form-group
-            label Password
-            input.form-control(type='password', id='pass-tf', name='pass', required)
-          .controls
-            span
-              input(type='checkbox')
-              |   Remember Me
-            br
-            br
-            button(type='submit').btn.btn-primary.button-sign-in
-              span.glyphicon.glyphicon-lock
-              | Sign In
-          .clearfix
-            hr
-          .btm-links
-            #forgot-password
-              a(href='#') Forgot Your Password?
-            #create-account
-              a(href='/signup') Create An Account
-          .clearfix

@@ -31,7 +31,7 @@ router.get('/yamin', (req,res)=>{
 })
 
 /*
- * Router for get login page
+ * Router for get login pageF
  */
 router.get('/login',ctrl.get_login);
 
@@ -51,7 +51,7 @@ router.get('/registration',ctrl.get_registration);
 /*
  * Router for post registration page
 */
-router.get('/registration',ctrl.post_registration);
+router.post('/registration',ctrl.post_registration);
 
 
 /*
