@@ -1,16 +1,97 @@
 doctype html
 html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    style.
+      .modal-header, h4, .close {
+      background-color: #0eb714;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      }
+      .modal-footer {
+      background-color: #f9f9f9;
+      }
   body
-    form(action="registration", method="post")
-      fieldset
-        legend Register:
-        |   Username: 
-        input(type='text', name="username" )
-        br
-        |   Password: 
-        input(type='password', name="password")
-        br
-        |   Skills(Java,C++,etc): 
-        input(type='text' ,name="skills")
-        br
-        input(type="submit", value="Submit")
+    .container
+      // Modal
+      #myModal.modal.fade(role='dialog')
+        .modal-dialog
+          // Modal content
+          .modal-content
+            .modal-header(style='padding:35px 50px;')
+              button.close(type='button', data-dismiss='modal') ×
+              h4
+                span.glyphicon.glyphicon-lock
+                |  Register
+            .modal-body(style='padding:40px 50px;')
+              form(action="registration" method="POST")
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-user
+                    |  Username
+                  input.form-control(type='text', name='username', placeholder='Enter username' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-user
+                    |  Firstname
+                  input.form-control(type='text', name='firstname', placeholder='Enter your firstname' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-user
+                    |  Lastname
+                  input.form-control(type='text', name='lastname', placeholder='Enter your lastname' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-eye-open
+                    |  Skills
+                  input.form-control(type='text', name='skills', placeholder='Enter skills, separated by a comma' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-eye-open
+                    |  Password
+                  input.form-control(type='password', name='password',id="pass", placeholder='Enter password' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-eye-open
+                    |  Retype-Password
+                  input.form-control(type='password', name='repassword',id="repass",placeholder='Re-enter password' required)
+                  <p id="message">Password confirmation...</p>
+                  <input type="checkbox" id="showpassword">Show Password</input>
+                button.btn.btn-success.btn-block(type='submit' id="send" disabled)
+                  span.glyphicon.glyphicon-off
+                  |  Register
+            .modal-footer
+              button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal')
+                span.glyphicon.glyphicon-remove
+                |  Cancel
+              p
+                | Already a member? 
+                a(href='login') Login
+    script.
+      $(document).ready(function(){
+      $("#myModal").modal();
+      });
+
+      $('#showpassword').click(function(){
+      if(document.getElementById('showpassword').checked) {
+      $('#pass').get(0).type = 'text';
+      $('#repass').get(0).type = 'text';
+      } else {
+      $('#pass').get(0).type = 'password';
+      $('#repass').get(0).type = 'password';
+      }
+      });
+
+      $('#pass, #repass').on('keyup', function () {
+      if ($('#pass').val() == $('#repass').val()) {
+      $('#message').html('Matching').css('color', 'green');
+      document.getElementById("send").disabled = false;
+      } else{
+      $('#message').html('Not Matching').css('color', 'red');
+      document.getElementById("send").disabled = true;
+      }
+      });
