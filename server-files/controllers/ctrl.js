@@ -11,7 +11,9 @@ module.exports.get_login = (req,res)=>{
 };
 
 module.exports.post_login = (req,res)=>{
-	
+	res.send("Submitted login form");
+	//Implement db authenticating form data
+	//Re-direct to home page and show login 
 };
 
 module.exports.get_registration = (req,res)=>{
@@ -21,10 +23,10 @@ module.exports.get_registration = (req,res)=>{
 module.exports.post_registration = (req,res)=>{
 	var db = req.db;
  	var collection = db.get('users');
-	var userName = req.body.username.trim();
-	var firstName = req.body.firstname.trim();
-	var lastName = req.body.lastname.trim();
-	var passWord = req.body.password.trim();
+	var userName = req.body.username;
+	var firstName = req.body.firstname;
+	var lastName = req.body.lastname;
+	var passWord = req.body.password;
 	var skills = req.body.skills;
 	skills = skills.replace(/\s*,\s*/g, ",").trim();
 	var skillList = skills.split(',');

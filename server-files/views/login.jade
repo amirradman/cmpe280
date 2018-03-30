@@ -26,10 +26,10 @@ html
           .modal-content
             .modal-header(style='padding:35px 50px;')
               h4
-                span.glyphicon.glyphicon-ok-circle
-                |  Register
+                span.glyphicon.glyphicon-log-in
+                |  Login
             .modal-body(style='padding:40px 50px;')
-              form(action="registration" method="POST")
+              form(action="login" method="POST")
                 .form-group
                   label
                     span.glyphicon.glyphicon-user
@@ -37,40 +37,19 @@ html
                   input.form-control(type='text', name='username', placeholder='Enter username' required)
                 .form-group
                   label
-                    span.glyphicon.glyphicon-user
-                    |  Firstname
-                  input.form-control(type='text', name='firstname', placeholder='Enter your firstname' required)
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-user
-                    |  Lastname
-                  input.form-control(type='text', name='lastname', placeholder='Enter your lastname' required)
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-list
-                    |  Skills
-                  input.form-control(type='text', name='skills', placeholder='Enter skills, separated by a comma' required)
-                .form-group
-                  label
                     span.glyphicon.glyphicon-eye-open
                     |  Password
                   input.form-control(type='password', name='password',id="pass", placeholder='Enter password' required)
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-eye-open
-                    |  Retype-Password
-                  input.form-control(type='password', name='repassword',id="repass",placeholder='Re-enter password' required)
-                  <p id="message"></p>
                   <input type="checkbox" id="showpassword">Show Password</input>
-                button.btn.btn-success.btn-block(type='submit' id="send" disabled)
-                  |  Register
+                button.btn.btn-success.btn-block(type='submit' id="send")
+                  |  Login
             .modal-footer
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal')
                 span.glyphicon.glyphicon-remove
                 |  Cancel
               p
-                | Already a member? 
-                a(href='login') Login
+                | Don't have an account? 
+                a(href='registration') Register!
     script.
       $(document).ready(function(){
       $("#myModal").modal();
@@ -79,24 +58,7 @@ html
       $('#showpassword').click(function(){
       if(document.getElementById('showpassword').checked) {
       $('#pass').get(0).type = 'text';
-      $('#repass').get(0).type = 'text';
       } else {
       $('#pass').get(0).type = 'password';
-      $('#repass').get(0).type = 'password';
-      }
-      });
-
-      $('#pass, #repass').on('keyup', function () {
-      if ($('#pass').val() == $('#repass').val()) {
-      $('#message').html('');
-      $('#pass').css('border','2px solid #2ed130');
-      $('#repass').css('border','2px solid #2ed130');
-      document.getElementById("send").disabled = false;
-      } else{
-      //
-        $('#message').html('Passwords are not matching!').css('color', 'red');
-      $('#pass').css('border','2px solid #e51616');
-      $('#repass').css('border','2px solid #e51616');
-      document.getElementById("send").disabled = true;
       }
       });
