@@ -60,4 +60,30 @@ router.post('/registration',ctrl.post_registration);
 router.post('/contactProcess',ctrl.post_contact);
 
 
+router.get('/manage',ctrl.loggedIn, function(req,res){
+	res.send("You have gained access to manage user page! User is: "+req.session.user);
+});
+
+router.get('/allusers',function(req,res){
+	var db = req.db;
+	var collection = db.get('users');
+	// var members = collection.distinct("username", function(err,data){
+	// 	if(err)
+	// 		console.log(err);
+	// 	else{
+	// 		for(var i=0;i<data.length; i++)
+	// 		{
+	// 			if(req.body.username === data[i])
+	// 			{
+	// 				res.render('register',{message: "User already exists"});
+	// 			}
+	// 			else{
+					
+	// 			}
+	// 		}
+	// 	}
+	// });
+});
+
+
 module.exports = router;

@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    title Login Page!
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
@@ -29,17 +30,18 @@ html
                 span.glyphicon.glyphicon-log-in
                 |  Login
             .modal-body(style='padding:40px 50px;')
+              <p style="color : red; text-align: center">#{credentialMessage}</p>
               form(action="login" method="POST")
                 .form-group
                   label
                     span.glyphicon.glyphicon-user
                     |  Username
-                  input.form-control(type='text', name='username', placeholder='Enter username' required)
+                  input.form-control(type='text', name='loginname', placeholder='Enter username' required)
                 .form-group
                   label
                     span.glyphicon.glyphicon-eye-open
                     |  Password
-                  input.form-control(type='password', name='password',id="pass", placeholder='Enter password' required)
+                  input.form-control(type='password', name='loginpass',id="pass", placeholder='Enter password' required)
                   <input type="checkbox" id="showpassword">Show Password</input>
                 button.btn.btn-success.btn-block(type='submit' id="send")
                   |  Login

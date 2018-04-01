@@ -1,9 +1,15 @@
 var nodemailer = require('nodemailer');
 require('dotenv').config();
 
+var userlist;
 
 module.exports.home = (req,res)=>{
-	res.render('index');
+	if(!req.session.user){
+		res.render('index');
+	}
+	else{
+		res.render('LoggedIndex',{user: req.session.user});
+	}
 };
 
 module.exports.get_login = (req,res)=>{
@@ -11,9 +17,22 @@ module.exports.get_login = (req,res)=>{
 };
 
 module.exports.post_login = (req,res)=>{
-	res.send("Submitted login form");
-	//Implement db authenticating form data
-	//Re-direct to home page and show login 
+	var db = req.db;
+	var collection = db.get('users');
+
+	collection.find({$and : [{username: req.body.loginname},{password: req.body.loginpass}]},function(err,data){
+		if(err)
+			console.log("An error occured:"+err);
+		else{
+			if(data.length>0){
+				req.session.user = data[0].username;
+				res.render('LoggedIndex',{user: req.session.user});
+			}
+			else{
+				res.render('login',{credentialMessage: "Invalid Credentials"});
+			}
+		}
+	});
 };
 
 module.exports.get_registration = (req,res)=>{
@@ -23,21 +42,42 @@ module.exports.get_registration = (req,res)=>{
 module.exports.post_registration = (req,res)=>{
 	var db = req.db;
  	var collection = db.get('users');
-	var userName = req.body.username;
-	var firstName = req.body.firstname;
-	var lastName = req.body.lastname;
-	var passWord = req.body.password;
-	var skills = req.body.skills;
-	skills = skills.replace(/\s*,\s*/g, ",").trim();
-	var skillList = skills.split(',');
-	collection.insert({
-		username: userName,
-		firstname: firstName,
-		lastname: lastName,
-		password: passWord,
-		skill: skillList
-	});
-	res.redirect('../');
+ 	collection.find({username: req.body.username},function(err,data){
+ 		if(err)
+ 			console.log("An error occured" + err);
+ 		else{
+ 			if(data.length > 0){
+ 				res.render('register',{duplicateUsername: "Username already exists"});
+ 			}
+ 	else{
+		var userName = req.body.username;
+		var firstName = req.body.firstname;
+		var lastName = req.body.lastname;
+		var passWord = req.body.password;
+		var skills = req.body.skills;
+		skills = skills.replace(/\s*,\s*/g, ",").trim();
+		var skillList = skills.split(',');
+		collection.insert({
+			username: userName,
+			firstname: firstName,
+			lastname: lastName,
+			password: passWord,
+			skill: skillList
+			});
+			res.redirect('../');
+ 	}}});
+ };
+
+module.exports.loggedIn = function(req,res,next){
+	if(req.session.user){
+		console.log("Logged In already");
+		console.log(req.session.user);
+		next();
+	}
+	else{
+		console.log("not logged in");
+		res.send("You must log in first");
+	}
 };
 
 module.exports.post_contact = (req,res)=>{
