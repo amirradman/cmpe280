@@ -30,13 +30,13 @@ html
                 span.glyphicon.glyphicon-ok-circle
                 |  Register
             .modal-body(style='padding:40px 50px;')
+              <p style="color: red; text-align: center; text-transform: uppercase; text-decoration: underline;">#{duplicateUsername}</p>
               form(action="registration" method="POST")
                 .form-group
                   label
                     span.glyphicon.glyphicon-user
                     |  Username
                   input.form-control(type='text', name='username', placeholder='Enter username' required)
-                  <p style="color: red">#{duplicateUsername}</p>
                 .form-group
                   label
                     span.glyphicon.glyphicon-user
@@ -67,7 +67,7 @@ html
                 button.btn.btn-success.btn-block(type='submit' id="send" disabled)
                   |  Register
             .modal-footer
-              button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal')
+              button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
               p

@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(session( {secret: "String for encrypting cookies.",
 	name: "Cookie_name",
+	cookie: {maxAge:7 * 24 * 3600 * 1000},
 	proxy: true,
 	resave: true,
 	saveUninitialized: true

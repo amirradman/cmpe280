@@ -78,6 +78,9 @@ html(lang='en')
       $("#resizable").resizable();
 
     style.
+      .profileIcon{
+      text-shadow: none;
+      }
       body,html{
       margin: 0px;
       padding: 0px;
@@ -202,8 +205,8 @@ html(lang='en')
             li
               a(href='#box4') Contact US
             li
-              a(href='profile')
-                span.glyphicon.glyphicon-user
+              a(href='update')
+                span.glyphicon.glyphicon-user.profileIcon
                 |  #{user}
             li
               a(href='logout')

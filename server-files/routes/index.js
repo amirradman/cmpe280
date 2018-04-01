@@ -60,30 +60,28 @@ router.post('/registration',ctrl.post_registration);
 router.post('/contactProcess',ctrl.post_contact);
 
 
-router.get('/manage',ctrl.loggedIn, function(req,res){
-	res.send("You have gained access to manage user page! User is: "+req.session.user);
-});
+/*
+ * Router for get profile/update form
+*/
+router.get('/update',ctrl.loggedIn,ctrl.get_update);
 
-router.get('/allusers',function(req,res){
-	var db = req.db;
-	var collection = db.get('users');
-	// var members = collection.distinct("username", function(err,data){
-	// 	if(err)
-	// 		console.log(err);
-	// 	else{
-	// 		for(var i=0;i<data.length; i++)
-	// 		{
-	// 			if(req.body.username === data[i])
-	// 			{
-	// 				res.render('register',{message: "User already exists"});
-	// 			}
-	// 			else{
-					
-	// 			}
-	// 		}
-	// 	}
-	// });
-});
+
+/*
+ * Router for update profile
+*/
+router.post('/update',ctrl.loggedIn,ctrl.post_update);
+
+
+/*
+ * Router for delete profile
+*/
+router.get('/delete',ctrl.delete);
+
+
+/*
+ * Router for logout button
+*/
+router.get('/logout',ctrl.logout);
 
 
 module.exports = router;

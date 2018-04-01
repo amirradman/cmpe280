@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Login Page!
+    title Registration Page!
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
@@ -27,40 +27,43 @@ html
           .modal-content
             .modal-header(style='padding:35px 50px;')
               h4
-                span.glyphicon.glyphicon-log-in
-                |  Login
+                span.glyphicon.glyphicon-ok-circle
+                |  My Profile
             .modal-body(style='padding:40px 50px;')
-              <p style="color : red; text-align: center; text-transform: uppercase; text-decoration: underline">#{credentialMessage}</p>
-              form(action="login" method="POST")
+              <p style="color: red; text-align: center; text-transform: uppercase; text-decoration: underline;">#{duplicateUsername}</p>
+              form(action="update" method="POST")
                 .form-group
                   label
                     span.glyphicon.glyphicon-user
                     |  Username
-                  input.form-control(type='text', name='loginname', placeholder='Enter username' required)
+                  input.form-control(type='text', name='username', value="#{un}" disabled)
                 .form-group
                   label
-                    span.glyphicon.glyphicon-eye-open
-                    |  Password
-                  input.form-control(type='password', name='loginpass',id="pass", placeholder='Enter password' required)
-                  <input type="checkbox" id="showpassword">Show Password</input>
-                button.btn.btn-success.btn-block(type='submit' id="send")
-                  |  Login
+                    span.glyphicon.glyphicon-user
+                    |  Firstname
+                  input.form-control(type='text',name='firstname',value="#{fn}",placeholder='Enter your firstname' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-user
+                    |  Lastname
+                  input.form-control(type='text',name='lastname',value="#{ln}",placeholder='Enter your lastname' required)
+                .form-group
+                  label
+                    span.glyphicon.glyphicon-list
+                    |  Skills
+                  input.form-control(type='text', name='skills',placeholder='Enter skills, separated by a comma' required)
+                br
+                button.btn.btn-success.btn-block(type='submit' id="updatebtn")
+                  |  Update Profile
+                br
+              form(action="delete" method="get")
+                button.btn.btn-danger.btn-block(type='submit' id="deletebtn")
+                  |  DELETE ACCOUNT
             .modal-footer
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
-              p
-                | Don't have an account? 
-                a(href='registration') Register!
     script.
       $(document).ready(function(){
       $("#myModal").modal();
-      });
-
-      $('#showpassword').click(function(){
-      if(document.getElementById('showpassword').checked) {
-      $('#pass').get(0).type = 'text';
-      } else {
-      $('#pass').get(0).type = 'password';
-      }
       });
