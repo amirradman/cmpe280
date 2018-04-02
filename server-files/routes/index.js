@@ -39,7 +39,7 @@ router.get('/login',ctrl.get_login);
 /*
  * Router for post login page
  */
-router.post('/login',ctrl.post_login);
+router.post('/',ctrl.post_login);
 
 
 /*
@@ -82,6 +82,12 @@ router.get('/delete',ctrl.delete);
  * Router for logout button
 */
 router.get('/logout',ctrl.logout);
+
+
+/*
+ * Router for admin manage page
+*/
+router.get('/manage',ctrl.adminLoggedIn,ctrl.get_manage);
 
 
 module.exports = router;

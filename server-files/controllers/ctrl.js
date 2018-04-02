@@ -28,7 +28,7 @@ module.exports.post_login = (req,res)=>{
 				req.session.user = data[0].username;
 				req.session.fname = data[0].firstname;
 				req.session.lname = data[0].lastname;
-				req.session.skill = data[0].skills;
+				req.session.skill = data[0].skill;
 				req.session.password = data[0].password;
 				res.render('LoggedIndex',{user: req.session.user});
 			}
@@ -55,25 +55,36 @@ module.exports.post_registration = (req,res)=>{
  			}
  	else{
 		var userName = req.body.username;
+			var userNameTrimed = userName.trim();
 		var firstName = req.body.firstname;
+			var firstNameTrimed = firstName.trim();
 		var lastName = req.body.lastname;
+			var lastNameTrimed = lastName.trim();
 		var passWord = req.body.password;
 		var skills = req.body.skills;
 		skills = skills.replace(/\s*,\s*/g, ",").trim();
 		var skillList = skills.split(',');
 		collection.insert({
-			username: userName,
-			firstname: firstName,
-			lastname: lastName,
+			username: userNameTrimed,
+			firstname: firstNameTrimed,
+			lastname: lastNameTrimed,
 			password: passWord,
 			skill: skillList
 			});
-			res.redirect('../');
+			res.redirect('/login');
  	}}});
  };
 
  module.exports.get_update = function(req,res){
-	res.render('profile',{un: req.session.user,fn: req.session.fname,ln: req.session.lname});
+ 	var db = req.db;
+ 	var collection = db.get('users');
+ 	collection.find({username: req.session.user},function(err,data){
+ 		req.session.user = data[0].username;
+		req.session.fname = data[0].firstname;
+		req.session.lname = data[0].lastname;
+		req.session.skill = data[0].skill;
+ 		res.render('profile',{un: req.session.user,fn: req.session.fname,ln: req.session.lname,sk: req.session.skill});
+ 	});
 };
 
 module.exports.post_update = function(req,res){
@@ -83,7 +94,7 @@ module.exports.post_update = function(req,res){
 	skills = skills.replace(/\s*,\s*/g, ",").trim();
 	var skillList = skills.split(',');
 	collection.update({username: req.session.user},{$set: {firstname: req.body.firstname, lastname: req.body.lastname, skill: skillList}});
-	res.render('profile', {updatemsg: "Profile updated successfully!",un: req.session.user,fn: req.body.firstname,ln: req.body.lastname});
+	res.render('profile', {updatemsg: "Profile updated successfully!",un: req.session.user,fn: req.body.firstname,ln: req.body.lastname,sk: req.body.skills});
 };
 
  module.exports.delete = function(req,res){
@@ -95,7 +106,7 @@ module.exports.post_update = function(req,res){
 			console.log("error deleting account"+err);
 		else{
 			req.session.destroy();
-			res.redirect('../');
+			res.redirect('/');
 		}
 	});
 };
@@ -103,7 +114,7 @@ module.exports.post_update = function(req,res){
  module.exports.logout = function(req,res){
  	if(req.session.user){
  		req.session.destroy();
- 		res.render('index');
+ 		res.redirect('/');
  	}
  	else{
  		res.send("There is no session to be destroyed!");
@@ -151,4 +162,22 @@ module.exports.post_contact = (req,res)=>{
 		}
 	});
 
+};
+
+
+
+module.exports.get_manage = function(req,res){
+	var db = req.db;
+	var collection = db.get('users');
+	collection.find({},{},function(err,docs){
+			res.render('userlist', {"userlist" : docs});
+		});
+};
+
+module.exports.adminLoggedIn = function(req,res,next){
+	if(req.session.user === 'admin')
+		next()
+	else{
+		res.send('<script>alert("You are not authorized. Log in as admin to continue")</script>');
+	}
 };

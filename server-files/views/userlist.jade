@@ -18,6 +18,12 @@ html
       .modal-footer {
       background-color: #f9f9f9;
       }
+      td, th{
+      text-align: center;
+      }
+      table{
+      width: 100%;
+      }
   body
     .container
       // Modal
@@ -27,40 +33,27 @@ html
           .modal-content
             .modal-header(style='padding:35px 50px;')
               h4
-                span.glyphicon.glyphicon-log-in
-                |  Login
-            .modal-body(style='padding:40px 50px;')
-              <p style="color : red; text-align: center; text-transform: uppercase; text-decoration: underline">#{credentialMessage}</p>
-              form(action="/" method="POST")
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-user
-                    |  Username
-                  input.form-control(type='text', name='loginname', placeholder='Enter username' required)
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-eye-open
-                    |  Password
-                  input.form-control(type='password', name='loginpass',id="pass", placeholder='Enter password' required)
-                  <input type="checkbox" id="showpassword">Show Password</input>
-                button.btn.btn-success.btn-block(type='submit' id="send")
-                  |  Login
+                |  Current Users
+            .modal-body
+              table(border=1)
+                tr
+                  th Username
+                  th Firstname
+                  th Lastname
+                  th Password
+                  th Skills
+                each user in userlist
+                  tr 
+                    td #{user.username}
+                    td #{user.firstname}
+                    td #{user.lastname}
+                    td #{user.password}
+                    td #{user.skill}
             .modal-footer
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
-              p
-                | Don't have an account? 
-                a(href='registration') Register!
     script.
       $(document).ready(function(){
       $("#myModal").modal();
-      });
-
-      $('#showpassword').click(function(){
-      if(document.getElementById('showpassword').checked) {
-      $('#pass').get(0).type = 'text';
-      } else {
-      $('#pass').get(0).type = 'password';
-      }
       });

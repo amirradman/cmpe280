@@ -21,7 +21,7 @@ html
   body
     .container
       // Modal
-      #myModal.modal.fade(role='dialog')
+      #myModal.modal.fade(role='dialog', data-backdrop="static" ,data-keyboard="false")
         .modal-dialog
           // Modal content
           .modal-content
@@ -51,7 +51,7 @@ html
                   label
                     span.glyphicon.glyphicon-list
                     |  Skills
-                  input.form-control(type='text', name='skills',placeholder='Enter skills, separated by a comma' required)
+                  input.form-control(type='text', name='skills',value="#{sk}",placeholder='Enter skills, separated by a comma' required)
                 br
                 button.btn.btn-success.btn-block(type='submit' id="updatebtn")
                   |  Update Profile
