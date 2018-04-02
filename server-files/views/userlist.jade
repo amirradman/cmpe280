@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Login Page!
+    title User List Page
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
@@ -18,11 +18,20 @@ html
       .modal-footer {
       background-color: #f9f9f9;
       }
-      td, th{
+      td{
       text-align: center;
       }
       table{
       width: 100%;
+      }
+      tr:hover{
+      background-color: #c5c8cc;
+      cursor: pointer;
+      }
+      th{
+      text-align: center;
+      background-color: green;
+      color: white;
       }
   body
     .container

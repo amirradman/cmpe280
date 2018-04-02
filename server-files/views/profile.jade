@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Registration Page!
+    title My Profile Page
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
@@ -27,8 +27,7 @@ html
           .modal-content
             .modal-header(style='padding:35px 50px;')
               h4
-                span.glyphicon.glyphicon-ok-circle
-                |  My Profile
+                |  Welcome <br> #{profileUser}
             .modal-body(style='padding:40px 50px;')
               <p style="color: green; text-align: center; text-transform: uppercase; text-decoration: underline;">#{updatemsg}</p>
               form(action="update" method="POST")

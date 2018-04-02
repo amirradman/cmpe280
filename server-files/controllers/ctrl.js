@@ -83,18 +83,22 @@ module.exports.post_registration = (req,res)=>{
 		req.session.fname = data[0].firstname;
 		req.session.lname = data[0].lastname;
 		req.session.skill = data[0].skill;
- 		res.render('profile',{un: req.session.user,fn: req.session.fname,ln: req.session.lname,sk: req.session.skill});
+ 		res.render('profile',{profileUser: req.session.fname,un: req.session.user,fn: req.session.fname,ln: req.session.lname,sk: req.session.skill});
  	});
 };
 
 module.exports.post_update = function(req,res){
 	var db = req.db;
 	var collection = db.get('users');
+	var firstName = req.body.firstname;
+	var firstNameTrimed = firstName.trim();
+	var lastName = req.body.lastname;
+	var lastNameTrimed = lastName.trim();
 	var skills = req.body.skills;
 	skills = skills.replace(/\s*,\s*/g, ",").trim();
 	var skillList = skills.split(',');
-	collection.update({username: req.session.user},{$set: {firstname: req.body.firstname, lastname: req.body.lastname, skill: skillList}});
-	res.render('profile', {updatemsg: "Profile updated successfully!",un: req.session.user,fn: req.body.firstname,ln: req.body.lastname,sk: req.body.skills});
+	collection.update({username: req.session.user},{$set: {firstname: firstNameTrimed, lastname:lastNameTrimed , skill: skillList}});
+	res.render('profile', {updatemsg: "Profile updated successfully!",profileUser: firstNameTrimed,un: req.session.user,fn: firstNameTrimed,ln: lastNameTrimed,sk: skillList});
 };
 
  module.exports.delete = function(req,res){
