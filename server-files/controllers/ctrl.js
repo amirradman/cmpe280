@@ -83,7 +83,7 @@ module.exports.post_update = function(req,res){
 	skills = skills.replace(/\s*,\s*/g, ",").trim();
 	var skillList = skills.split(',');
 	collection.update({username: req.session.user},{$set: {firstname: req.body.firstname, lastname: req.body.lastname, skill: skillList}});
-	res.redirect('../');
+	res.render('profile', {updatemsg: "Profile updated successfully!",un: req.session.user,fn: req.body.firstname,ln: req.body.lastname});
 };
 
  module.exports.delete = function(req,res){
@@ -95,7 +95,7 @@ module.exports.post_update = function(req,res){
 			console.log("error deleting account"+err);
 		else{
 			req.session.destroy();
-			res.render('index');
+			res.redirect('../');
 		}
 	});
 };

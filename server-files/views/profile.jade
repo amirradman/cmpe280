@@ -30,7 +30,7 @@ html
                 span.glyphicon.glyphicon-ok-circle
                 |  My Profile
             .modal-body(style='padding:40px 50px;')
-              <p style="color: red; text-align: center; text-transform: uppercase; text-decoration: underline;">#{duplicateUsername}</p>
+              <p style="color: green; text-align: center; text-transform: uppercase; text-decoration: underline;">#{updatemsg}</p>
               form(action="update" method="POST")
                 .form-group
                   label
@@ -66,4 +66,14 @@ html
     script.
       $(document).ready(function(){
       $("#myModal").modal();
+      });
+
+      $("#deletebtn").click(function(){
+      var verify = confirm("Are you sure you want to delete your account?");
+      if(verify){
+      window.location = '/';
+      }
+      else{
+      return false;
+      }
       });
