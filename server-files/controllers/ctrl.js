@@ -182,6 +182,38 @@ module.exports.adminLoggedIn = function(req,res,next){
 	if(req.session.user === 'admin')
 		next()
 	else{
-		res.send('<script>alert("You are not authorized. Log in as admin to continue")</script>');
-	}
-};
+		var db = req.db;
+ 		var collection = db.get('users');
+ 		collection.find({username: req.session.user},function(err,data){
+ 		req.session.user = data[0].username;
+		req.session.fname = data[0].firstname;
+		req.session.lname = data[0].lastname;
+		req.session.skill = data[0].skill;
+ 		res.render('profile',{updatemsg: "Login as admin to gain access",profileUser: req.session.fname,un: req.session.user,fn: req.session.fname,ln: req.session.lname,sk: req.session.skill});
+ 	});
+ }};
+
+ module.exports.delete_user = function(req,res){
+ 		var db = req.db;
+		var collection = db.get('users');
+		collection.remove({username: req.body.rmuser},function(err){
+		if(err)
+			console.log("error deleting account"+err);
+		else{
+			collection.find({},{},function(err,data){
+			if(err)
+				console.log(err);
+			else{
+			if(data.length == 0){
+ 				req.session.destroy();
+ 				res.redirect('/');
+			}
+			else{
+				res.render('userlist', {"userlist" : data});
+			}
+		}
+	 });
+		}
+	});
+
+ };

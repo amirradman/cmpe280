@@ -90,4 +90,6 @@ router.get('/logout',ctrl.logout);
 router.get('/manage',ctrl.adminLoggedIn,ctrl.get_manage);
 
 
+router.post('/deleteuser',ctrl.delete_user);
+
 module.exports = router;

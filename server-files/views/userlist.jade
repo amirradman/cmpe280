@@ -58,6 +58,13 @@ html
                     td #{user.lastname}
                     td #{user.password}
                     td #{user.skill}
+              br
+              form(action="deleteuser" method="post")
+                .form-group
+                input.form-control(type='text', name='rmuser', placeholder='Enter a username')
+                br
+                button.btn.btn-primary.btn-block(type='submit')
+                    | Delete User
             .modal-footer
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove

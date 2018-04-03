@@ -29,7 +29,7 @@ html
               h4
                 |  Welcome <br> #{profileUser}
             .modal-body(style='padding:40px 50px;')
-              <p style="color: green; text-align: center; text-transform: uppercase; text-decoration: underline;">#{updatemsg}</p>
+              <p style="color: red; text-align: center; text-transform: uppercase; text-decoration: underline;">#{updatemsg}</p>
               form(action="update" method="POST")
                 .form-group
                   label
@@ -62,6 +62,9 @@ html
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
+              button.btn.btn-primary.btn-default.pull-right(type='submit', data-dismiss='modal' onclick="window.location='/manage'")
+                span
+                | View Users - Admin Only
     script.
       $(document).ready(function(){
       $("#myModal").modal();
