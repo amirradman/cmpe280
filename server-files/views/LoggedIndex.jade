@@ -89,7 +89,7 @@ html(lang='en')
       #box1{
       height: 100vh;
       width: 100%;
-      background-image: url(/images/1.jpg);
+      background-image: url(/images/resumebg.jpg);
       background-size: cover;
       display: table;
       background-attachment: fixed;
@@ -106,7 +106,7 @@ html(lang='en')
       #box3{
       height: 100vh;
       width: 100%;
-      background-image: url(/images/resumebg.jpg);
+      background-image: url(/images/1.jpg);
       background-size: cover;
       display: table;
       background-attachment: fixed;
@@ -200,6 +200,8 @@ html(lang='en')
           a.navbar-brand.navbar-header.pull-left(style="color: white;font-family: 'Monoton', cursive;") GroupBy
         .collapse.navbar-collapse.pull-right
           ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/search') Search
             li
               a(href='#box2') About Us
             li
@@ -304,11 +306,11 @@ html(lang='en')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
               | &nbsp
               span
-                a(href="https://s3.amazonaws.com/groupbyresumes/Resume.pdf" target="_blank")
+                a(href="https://s3.amazonaws.com/groupbyresumes/Ketki+Bhusari_Resume.pdf" target="_blank")
                   i.fa.fa-cloud-download(style="font-size: 30px; color:white")
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc3', data-toggle='collapse')
-            img.img-circle(src='/images/c.jpg', width='250', height='250')
+            img.img-circle(src='/images/praneetha.jpg', width='250', height='250')
           #desc3.collapse
             p(style="color: white;")
               | My name is Praneetha Devireddy
@@ -338,7 +340,7 @@ html(lang='en')
                   i.fa.fa-git-square(style='font-size:30px; color:white;')
               | &nbsp
               span
-                a(href="https://s3.amazonaws.com/groupbyresumes/Resume.pdf" target="_blank")
+                a(href="https://s3.amazonaws.com/groupbyresumes/Praneethareddy.pdf" target="_blank")
                   i.fa.fa-cloud-download(style="font-size: 30px; color:white")
         .col-xs-12.col-sm-6.col-md-3
           a(href='#desc4', data-toggle='collapse')
@@ -375,17 +377,7 @@ html(lang='en')
                 a(href="https://s3.amazonaws.com/groupbyresumes/yaminresume.pdf" target="_blank")
                   i.fa.fa-cloud-download(style="font-size: 30px; color:white")         
     #box3.container-fluid
-      .row(style="padding-top: 15vh;").container-fluid
-        #tabs.col-sm-12.col-md-12.col-lg-12
-          ul
-            li
-              a(href='yamin') Yamin Wang
-            li
-              a(href='praneetha') Praneetha Devireddy
-            li
-              a(href='amir') Amir Radman
-            li
-              a(href='ketki') Kekti Bhusari
+
     #box4
       .row
       .col-sm-12.col-md-12.col-lg-12

@@ -19,9 +19,11 @@ html
       background-color: #f9f9f9;
       }
       td{
+      word-wrap: break-word;
       text-align: center;
       }
       table{
+      table-layout: auto;
       width: 100%;
       }
       tr:hover{
@@ -32,6 +34,13 @@ html
       text-align: center;
       background-color: green;
       color: white;
+      }
+      .modal-dialog{
+      width: 50%;
+      }
+      body{
+      background: url('/images/lrbg.jpg');
+      background-size: cover;
       }
   body
     .container
@@ -69,6 +78,9 @@ html
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
+              button.btn.btn-default.pull-right(type='submit', data-dismiss='modal' onclick="window.location='/update'")
+                span.glyphicon.glyphicon-arrow-left
+                |  Go back
     script.
       $(document).ready(function(){
       $("#myModal").modal();

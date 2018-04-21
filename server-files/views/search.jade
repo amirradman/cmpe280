@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Login Page!
+    title Search Users Page
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
@@ -18,8 +18,28 @@ html
       .modal-footer {
       background-color: #f9f9f9;
       }
+      td{
+      word-wrap: break-word;
+      text-align: center;
+      }
+      table{
+      table-layout: fixed;
+      width: 100%;
+      }
+      tr:hover{
+      background-color: #c5c8cc;
+      cursor: pointer;
+      }
+      th{
+      text-align: center;
+      background-color: green;
+      color: white;
+      }
+      .modal-dialog{
+      width: 50%;
+      }
       body{
-      background: url('/images/lrbg.jpg');
+      background: url('/images/searchbg.jpg');
       background-size: cover;
       }
   body
@@ -31,40 +51,30 @@ html
           .modal-content
             .modal-header(style='padding:35px 50px;')
               h4
-                span.glyphicon.glyphicon-log-in
-                |  Login
-            .modal-body(style='padding:40px 50px;')
-              <p style="color : red; text-align: center; text-transform: uppercase; text-decoration: underline">#{credentialMessage}</p>
-              form(action="/" method="POST")
+                |  Search Users
+            .modal-body
+              table(border=1)
+                tr
+                  th Firstname
+                  th Lastname
+                  th Skills
+                each user in found
+                  tr
+                    td #{user.firstname}
+                    td #{user.lastname}
+                    td #{user.skill}
+              br
+              form(action="/search" method="post")
                 .form-group
-                  label
-                    span.glyphicon.glyphicon-user
-                    |  Username
-                  input.form-control(type='text', name='loginname', placeholder='Enter username' required)
-                .form-group
-                  label
-                    span.glyphicon.glyphicon-eye-open
-                    |  Password
-                  input.form-control(type='password', name='loginpass',id="pass", placeholder='Enter password' required)
-                  <input type="checkbox" id="showpassword">Show Password</input>
-                button.btn.btn-success.btn-block(type='submit' id="send")
-                  |  Login
+                input.form-control(type='text',value="#{sk}", name='skills', placeholder='Enter skill(s), separated by a comma')
+                br
+                button.btn.btn-primary.btn-block(type='submit')
+                    | Find User(s)
             .modal-footer
               button.btn.btn-danger.btn-default.pull-left(type='submit', data-dismiss='modal' onclick="window.location='/'")
                 span.glyphicon.glyphicon-remove
                 |  Cancel
-              p
-                | Don't have an account? 
-                a(href='registration') Register!
     script.
       $(document).ready(function(){
       $("#myModal").modal();
-      });
-
-      $('#showpassword').click(function(){
-      if(document.getElementById('showpassword').checked) {
-      $('#pass').get(0).type = 'text';
-      } else {
-      $('#pass').get(0).type = 'password';
-      }
       });

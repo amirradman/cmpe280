@@ -62,7 +62,7 @@ module.exports.post_registration = (req,res)=>{
 			var lastNameTrimed = lastName.trim();
 		var passWord = req.body.password;
 		var skills = req.body.skills;
-		skills = skills.replace(/\s*,\s*/g, ",").trim();
+		skills = skills.replace(/\s*,\s*/g, ",").trim().toLowerCase();
 		var skillList = skills.split(',');
 		collection.insert({
 			username: userNameTrimed,
@@ -95,7 +95,7 @@ module.exports.post_update = function(req,res){
 	var lastName = req.body.lastname;
 	var lastNameTrimed = lastName.trim();
 	var skills = req.body.skills;
-	skills = skills.replace(/\s*,\s*/g, ",").trim();
+	skills = skills.replace(/\s*,\s*/g, ",").trim().toLowerCase();
 	var skillList = skills.split(',');
 	collection.update({username: req.session.user},{$set: {firstname: firstNameTrimed, lastname:lastNameTrimed , skill: skillList}});
 	res.render('profile', {updatemsg: "Profile updated successfully!",profileUser: firstNameTrimed,un: req.session.user,fn: firstNameTrimed,ln: lastNameTrimed,sk: skillList});
@@ -216,4 +216,30 @@ module.exports.adminLoggedIn = function(req,res,next){
 		}
 	});
 
+ };
+
+ module.exports.getsearch = function(req,res){
+ 		res.render('emptySearch');
+ };
+
+ module.exports.postsearch = function(req,res){
+ 		//POST THE DATA SEARCHED FOR DISPLAY
+ 		var db = req.db;
+		var collection = db.get('users');
+		var skills = req.body.skills;
+		skills = skills.replace(/\s*,\s*/g, ",").trim().toLowerCase();
+		var skillList = skills.split(',');
+			collection.find({ skill : { $in: skillList  } },function(err,data){
+				if(err)
+					console.log("An error occured during search " + err);
+				else{
+					if(data.length == 0)
+					{
+						res.render('emptySearch');
+					}
+					else{
+						res.render('search' , {"found" : data, sk: skillList});
+					}
+				}
+		});
  };
