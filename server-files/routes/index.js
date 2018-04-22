@@ -12,9 +12,22 @@ var path = require('path');
 router.get('/',ctrl.home);
 
 //routing for ajax call for drag and drop
-router.get('/text', (req,res)=>{
-	res.sendFile(path.join(__dirname,"../views/text.html"));
-})
+router.get('/mongo', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/mongo.html"));
+});
+
+router.get('/express', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/express.html"));
+});
+
+router.get('/angular', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/angular.html"));
+});
+
+
+router.get('/node', (req,res)=>{
+	res.sendFile(path.join(__dirname,"../views/node.html"));
+});
 
 
 /*

@@ -47,13 +47,27 @@ html(lang='en')
       drawmap();
       });
 
-      $(function(){
-      $("#drag").draggable({revert: "invalid", stack: "#drag"});
-      $("#drop").droppable({
-      classes: {"ui-droppable-active":"ui-state-active"},tolerance: "fit",
-      drop: function(event, ui){
-      $("#ajax-column").load("text");
-      }
+      $(document).ready(function(){
+        $("#m").click(function(){
+          $(".show").load("mongo");
+      });
+      });
+
+      $(document).ready(function(){
+        $("#e").click(function(){
+          $(".show").load("express");
+      });
+      });
+
+      $(document).ready(function(){
+        $("#a").click(function(){
+          $(".show").load("angular");
+      });
+      });
+
+      $(document).ready(function(){
+        $("#n").click(function(){
+          $(".show").load("node");
       });
       });
       
@@ -71,13 +85,31 @@ html(lang='en')
       $("h3").delay(1200).animate({opacity:'1'},1500);
       });
 
-      $(function(){
-      $("#tabs").tabs({});
-      });
-
-      $("#resizable").resizable();
-
     style.
+      .bmenu{
+      padding: 0px;
+      margin: 0px 0 10px 0;
+      position: relative;
+      }
+      .bmenu li{
+      letter-spacing: 3px;
+      font-size : 50px;
+      display: block;
+      padding: 50px;
+      }
+      .bmenu li a{
+      display: block;
+      text-transform: uppercase;
+      text-shadow: 0px 0px 3px #fff;
+      }
+      .bmenu li a:hover{
+      font-style: oblique;
+      color: #fff;
+      text-shadow: 0px 0px 1px #fff;
+      padding-left: 50px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      }
       .profileIcon, .loginIcon{
       text-shadow: none;
       }
@@ -97,7 +129,7 @@ html(lang='en')
       #box2{
       height: 100vh;
       width: 100%;
-      background-image: url(/images/2.jpg);
+      background-image: url(/images/1.jpg);
       background-size: cover;
       display: table;
       background-attachment: fixed;
@@ -106,7 +138,7 @@ html(lang='en')
       #box3{
       height: 100vh;
       width: 100%;
-      background-image: url(/images/1.jpg);
+      background-image: url(/images/2.jpg);
       background-size: cover;
       display: table;
       background-attachment: fixed;
@@ -382,22 +414,23 @@ html(lang='en')
                   i.fa.fa-cloud-download(style="font-size: 30px; color:white")         
     #box3.container-fluid
       .row
-      .col-xs-12.col-sm-6.col-md-3
-
-        img.img-square(src='/images/yamin.jpg', width='250', height='250')
-
-      .col-xs-12.col-sm-6.col-md-3
-
-        img.img-square(src='/images/yamin.jpg', width='250', height='250')
-
-      .col-xs-12.col-sm-6.col-md-3
-
-        img.img-square(src='/images/yamin.jpg', width='250', height='250')
-
-      .col-xs-12.col-sm-6.col-md-3
-
-        img.img-square(src='/images/yamin.jpg', width='250', height='250')
-
+      .col-sm-12.col-md-12.col-lg-12
+        h2(style="letter-spacing:2px;text-align: center;border-radius:25px;font-family:Rye; color: white;") Technologies Used
+        br
+        br 
+      .row
+        .col-sm-12.col-md-12.col-lg-6(style="height: 100vh;")
+          ul.bmenu
+            li 
+              a(id="m" , style="cursor:pointer;") MongoDB
+            li 
+              a(id="e" , style="cursor:pointer;") Express
+            li 
+              a(id="a" , style="cursor:pointer;") AngularJS
+            li 
+              a(id="n" , style="cursor:pointer;") NodeJS
+        .col-sm-12.col-md-12.col-lg-6(style="margin-top: 40px; height: 70vh;")
+          .show
     #box4
       .row
       .col-sm-12.col-md-12.col-lg-12
