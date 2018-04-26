@@ -11,7 +11,7 @@ var path = require('path');
  */
 router.get('/',ctrl.home);
 
-//routing for ajax call for drag and drop
+//routing for data in 3rd box for technologies used
 router.get('/mongo', (req,res)=>{
 	res.sendFile(path.join(__dirname,"../views/mongo.html"));
 });
